@@ -1,17 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import React from 'react'
-import { usePathname } from "next/navigation";
+import { CiShoppingCart } from "react-icons/ci";
 
 const Navbar = () => {
-    const pathname  = usePathname()
+  
   return (
-    <nav className="flex gap-10 min-h-[80px] pt-8 uppercase">
-        <Link href="/" className={`${pathname === "/" ? "text-primary-green font-bold" :""}`}>home</Link>
-        <Link href="/blog" className={`${pathname === "/blog" ? "text-primary-green font-bold" :""}`}>blog</Link>
-        <Link href="/shop" className={`${pathname === "/shop" ? "text-primary-green font-bold" :""}`}>shop</Link>
-        <Link href="/about" className={`${pathname === "/about" ? "text-primary-green font-bold" :""}`}>about</Link>
+    <nav className="flex gap-10 min-h-[80px] pt-8 uppercase justify-between bg-gray-900">
+      <h3 className='uppercase font-bold text-2xl'>logo</h3>
+       <CiShoppingCart size={35}/>
     </nav>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import ProductList from "./components/productList";
 
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         className='container'
       >
         <Navbar />
+        <ProductList />
         {children}
       </body>
     </html>

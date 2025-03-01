@@ -23,9 +23,14 @@ const ProductList = () => {
       console.log('داده‌های محصولات:', products); 
   }, []);
     return (
-        <ul className='grid items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-20'>
-        {products.map(item=><li key={item.id} className=' border-[1px] border-white p-5 text-red-700'>{item.name}
-          <Image src={item.image} alt={item.name} width={450} height={450} unoptimized />
+        <ul className='grid grid-cols-1 gap-5 py-20'>
+        {products.map(item=><li key={item.id} className='p-2 rounded-[10px] flex  items-center'>
+          <Image src={item.image} alt={item.name} width={550} height={350} unoptimized />
+          <div>
+          <p className='mt-5'>{item.name}</p>
+          <p className='mt-5'>{item.price}</p>
+          </div>
+          <button className='bg-gray-700 text-white p-3 rounded-md text-[12px]'>افزودن به سبد خرید</button>
         </li>)}
 
         

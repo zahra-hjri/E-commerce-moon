@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import ProductList from "./components/productList";
+import ProductList from "./components/ProductList";
 
 
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className='container'
+        className='container bg-black text-white'
       >
         <Navbar />
         <ProductList />

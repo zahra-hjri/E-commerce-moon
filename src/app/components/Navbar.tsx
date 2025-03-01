@@ -1,14 +1,18 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CiShoppingCart } from "react-icons/ci";
 import { IoLogoElectron } from "react-icons/io5";
 
 const Navbar = () => {
+  useEffect(() => {
+    console.log("Test");
+  }, []);
+  
   
   return (
-    <nav className="flex gap-10 min-h-[80px] pt-8 uppercase justify-between">
-      <IoLogoElectron className='text-primary-green' size={55}/>
+    <nav className="flex gap-10 min-h-[80px] pt-8 uppercase justify-between ">
+      <IoLogoElectron className='text-primary-green font-bold' size={45}/>
       <div className="flex gap-5 items-center">
        <div>
         <span className='hover:text-primary-green cursor-pointer'>ثبت‌ نام</span>

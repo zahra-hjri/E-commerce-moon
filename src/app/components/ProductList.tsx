@@ -16,18 +16,20 @@ const ProductList = () => {
 
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch('/api/products', { cache: 'no-store' })
       .then(res => res.json())
       .then((data: Product[]) => setProducts(data))
       .catch(err => console.error('خطا:', err));
+      console.log('داده‌های محصولات:', products); 
   }, []);
     return (
-        <div>
-        {products.map(item=><li key={item.id}>{item.name}
+        <ul className='grid items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-20'>
+        {products.map(item=><li key={item.id} className=' border-[1px] border-white p-5 text-red-700'>{item.name}
           <Image src={item.image} alt={item.name} width={450} height={450} unoptimized />
-          {/* <img src={item.image} alt={item.name} /> */}
         </li>)}
-    </div>
+
+        
+    </ul>
   )
 }
 

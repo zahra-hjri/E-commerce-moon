@@ -10,7 +10,7 @@ export default {
     extend: {
       container: {
         center: true, 
-        padding: "2rem", 
+        padding: "1rem", 
       },
       colors: {
         "primary": "#24262b",

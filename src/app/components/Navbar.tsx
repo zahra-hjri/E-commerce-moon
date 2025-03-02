@@ -19,7 +19,7 @@ const Navbar = () => {
         <span>/</span>
         <span className='hover:text-primary-green cursor-pointer'>ورود</span>
         </div>
-      <div className='relative'>
+      <div className='relative cursor-pointer'>
         <div className='w-[25px] h-[25px] text-white rounded-full absolute bg-primary-green flex items-center justify-center -top-2 -right-2'>14</div>
        <CiShoppingCart size={35}/>
        </div>

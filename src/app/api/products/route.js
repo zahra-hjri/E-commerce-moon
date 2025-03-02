@@ -1,4 +1,3 @@
-// import { revalidatePath } from "next/cache";
 
 let products = [
   { id: 1, name: "هدفون", price: 25000000, image: "/images/airpods-max.jpg" },
@@ -20,9 +19,6 @@ export async function POST(req) {
     const body = await req.json();
     const newProduct = { id: Date.now(), ...body };
     products.push(newProduct);
-
-    // revalidatePath("/"); // مسیر صفحه‌ای که باید رفرش بشه
-
     return Response.json(newProduct, { status: 201 });
   } 
   catch (error) {

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const ProductList = () => {
+  
   interface Product {
     id: number;
     name: string;

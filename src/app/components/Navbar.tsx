@@ -18,7 +18,7 @@ const Navbar = () => {
         <span className='hover:text-primary-green cursor-pointer'>ورود</span>
         </div>
       <div className='relative cursor-pointer' onClick={handleOpenCart}>
-        <div className='w-[25px] h-[25px] text-white rounded-full absolute bg-primary-green flex items-center justify-center -top-2 -right-2'>14</div>
+        <div className='w-[25px] h-[25px] text-white rounded-full absolute bg-primary-green flex items-center justify-center -top-2 -right-2'>0</div>
        <CiShoppingCart size={35}/>
        </div>
       </div>

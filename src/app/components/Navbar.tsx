@@ -23,7 +23,8 @@ const Navbar = () => {
        </div>
       </div>
 
-      {isOpenCart && <ShoppingCart /> }
+      {isOpenCart && <div className="fixed right-0 top-0 z-20 bg-zinc-950 w-[50%] lg:w-[30%] min-h-full">
+        <ShoppingCart /> </div>}
     </nav>
   )
 }

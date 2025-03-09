@@ -18,15 +18,12 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isOpenCart, setIsOpenCart] = useState(false);
 
   const handleOpenCart = () => {
     setIsOpenCart((prev) => !prev);
   };
-
-
 
   return (
     <CartContext.Provider value={{ cart, isOpenCart, handleOpenCart }}>

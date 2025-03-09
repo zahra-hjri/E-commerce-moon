@@ -1,4 +1,3 @@
-
 let products = [
   { id: 1, name: "هدفون", price: 25000000, image: "/images/airpods-max.jpg" },
   { id: 2, name: "ایرپاد ", price: 15000000, image: "/images/airpods.jpg" },
@@ -20,8 +19,7 @@ export async function POST(req) {
     const newProduct = { id: Date.now(), ...body };
     products.push(newProduct);
     return Response.json(newProduct, { status: 201 });
-  } 
-  catch (error) {
+  } catch (error) {
     return Response.json({ error: "Invalid data" }, { status: 400 });
   }
 }

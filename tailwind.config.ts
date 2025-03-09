@@ -9,11 +9,11 @@ export default {
   theme: {
     extend: {
       container: {
-        center: true, 
-        padding: "1rem", 
+        center: true,
+        padding: "1rem",
       },
       colors: {
-        "primary": "#24262b",
+        primary: "#24262b",
         "primary-gray": "#5e626f",
         "primary-green": "#0D775E",
         "red-gray": "#444444",

@@ -1,20 +1,19 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '@/redux/CartReducer';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/CartReducer";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const ProductList = () => {
-  
   interface Product {
     id: number;
     name: string;
     price: number;
     image: string;
   }
-  
+
   const [products, setProducts] = useState<Product[]>([]);
   const dispatch = useDispatch();
 
@@ -33,7 +32,6 @@ const ProductList = () => {
 
   const handleAddToCart = (item: Product) => {
     dispatch(addToCart(item));
-    
   };
 
   return (
@@ -54,7 +52,7 @@ const ProductList = () => {
           <div className="flex justify-between my-2 px-4">
             <p className="mt-5 text-[12px]">{item.name}</p>
             <p className="mt-5 text-[14px] text-primary-green font-bold">
-              {item.price.toLocaleString('fa-IR')} <span>ریال</span>
+              {item.price.toLocaleString("fa-IR")} <span>ریال</span>
             </p>
           </div>
           <button

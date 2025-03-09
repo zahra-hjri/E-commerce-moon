@@ -1,32 +1,34 @@
 "use client";
 
 import { CiShoppingCart } from "react-icons/ci";
-import { IoLogoElectron } from "react-icons/io5";
+import { IoPersonOutline } from "react-icons/io5";
+import { GrFavorite } from "react-icons/gr";
 import ShoppingCart from "./ShoppingCart";
 import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
-
-  const { handleOpenCart,isOpenCart } = useCart();
+  const { handleOpenCart, isOpenCart } = useCart();
   return (
-    <nav className="flex gap-10 min-h-[80px] pt-8 uppercase justify-between ">
-      <IoLogoElectron className='text-primary-green font-bold' size={45}/>
+    <nav className=" flex gap-10 min-h-[80px] px-20 py-8 justify-between sticky top-0 z-20 bg-white-100 shadow-2xl">
+      <h2 className="text-4xl font-normal">miniture</h2>
       <div className="flex gap-5 items-center">
-       <div>
-        <span className='hover:text-primary-green cursor-pointer'>ثبت‌ نام</span>
-        <span>/</span>
-        <span className='hover:text-primary-green cursor-pointer'>ورود</span>
+        <div className="relative cursor-pointer" onClick={handleOpenCart}>
+          <div className="w-[25px] h-[25px] text-white rounded-full absolute bg-orange-500 flex items-center justify-center -top-2 -right-2">
+            0
+          </div>
+          <CiShoppingCart size={35} />
         </div>
-      <div className='relative cursor-pointer' onClick={handleOpenCart}>
-        <div className='w-[25px] h-[25px] text-white rounded-full absolute bg-primary-green flex items-center justify-center -top-2 -right-2'>0</div>
-       <CiShoppingCart size={35}/>
-       </div>
+        <IoPersonOutline size={30} />
+        <GrFavorite size={30} />
       </div>
 
-      {isOpenCart && <div className="fixed right-0 top-0 z-20 bg-zinc-950 w-[50%] lg:w-[30%] min-h-full">
-        <ShoppingCart /> </div>}
+      {isOpenCart && (
+        <div className="fixed right-0 top-0 z-20 bg-gray-100 w-[50%] lg:w-[30%] min-h-full">
+          <ShoppingCart />{" "}
+        </div>
+      )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

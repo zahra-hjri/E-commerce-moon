@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+//components
 import Navbar from "./components/Navbar";
-import ProductList from "./components/ProductList";
+import Footer from "./components/Footer";
+//context
 import { CartProvider } from "@/context/CartContext";
+//redux
 import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
@@ -21,8 +24,8 @@ export default function RootLayout({
         <Providers>
           <CartProvider>
             <Navbar />
-            <ProductList />
             {children}
+            <Footer />
           </CartProvider>
         </Providers>
       </body>

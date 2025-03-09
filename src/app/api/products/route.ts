@@ -1,4 +1,4 @@
-let products = [
+const products = [
   { id: 1, name: "هدفون", price: 25000000, image: "/images/airpods-max.jpg" },
   { id: 2, name: "ایرپاد ", price: 15000000, image: "/images/airpods.jpg" },
   { id: 3, name: "بیتز", price: 3500000, image: "/images/beats.jpg" },

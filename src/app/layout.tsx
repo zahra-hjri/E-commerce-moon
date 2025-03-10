@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 //components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "@/app/components/layout/Navbar";
+import Footer from "@/app/components/layout/Footer";
 //context
 import { CartProvider } from "@/context/CartContext";
 //redux

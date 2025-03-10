@@ -1,9 +1,11 @@
-import ProductList from "./components/ProductList";
+// import ProductList from "@/app/components/ui/ProductList";
+import Hero from "@/app/components/ui/Hero";
 
 export default function Home() {
   return (
     <div className="">
-      <ProductList />
+      <Hero />
+      {/* <ProductList /> */}
     </div>
   );
 }

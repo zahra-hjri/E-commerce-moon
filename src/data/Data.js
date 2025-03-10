@@ -50,6 +50,13 @@ export const navbar = [
     nav: "Accessories",
   },
 ];
+export const navbarMenu = [
+  { id: 1, title: "Home", src: "/" },
+  { id: 2, title: "Shop", src: "/shop" },
+  { id: 3, title: "Blog", src: "/blog" },
+  { id: 4, title: "About", src: "/about" },
+  { id: 5, title: "Contact", src: "/contact" },
+];
 
 export const banners = [
   {

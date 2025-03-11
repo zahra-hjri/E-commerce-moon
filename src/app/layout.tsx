@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 //components
-import Navbar from "@/app/components/layout/Navbar";
-import Footer from "@/app/components/layout/Footer";
+import Header from "@/app/components/layout/Header";
+// import Footer from "@/app/components/layout/Footer";
 //context
 import { CartProvider } from "@/context/CartContext";
 //redux
@@ -20,12 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white-100 text-black">
+      <body className="">
         <Providers>
           <CartProvider>
-            <Navbar />
+            <Header />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </CartProvider>
         </Providers>
       </body>

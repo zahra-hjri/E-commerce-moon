@@ -7,6 +7,7 @@ import Header from "@/app/components/layout/Header";
 import { CartProvider } from "@/context/CartContext";
 //redux
 import { Providers } from "./Providers";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "my store",
@@ -19,6 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className="">
         <Providers>
@@ -30,5 +32,6 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

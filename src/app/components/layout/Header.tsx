@@ -67,7 +67,7 @@ const Header = () => {
             >
               <Image src={logo} alt="logo" width={140} height={90} />
             </div>
-            <ul className="hidden lg:flex items-center justify-between gap-8">
+            <ul className="hidden lg:flex items-center justify-between gap-10">
               {menulists.map((item) => (
                 <li
                   key={item.id}

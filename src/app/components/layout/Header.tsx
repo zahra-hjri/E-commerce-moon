@@ -15,50 +15,24 @@ import {
 } from "react-icons/io5";
 import Badge from "@/app/components/ui/Badge";
 import { SignInButton, UserButton } from "@clerk/nextjs";
-import { useEffect, useRef, useState } from "react";
-
-{
-  /* <div className="lg:h-[88px] lg:absolute lg:top-0 lg:right-0 lg:w-1/3 lg:-z-10"> */
-}
+import { useState } from "react";
 
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const handleMenuToggle = () => {
     setIsOpenMenu((prev) => !prev);
   };
-  const menuRef = useRef(null);
-  const closeMenuOutside = (e) => {
-    if (menuRef.current && !menuRef.current.contains(e.target)) {
-      setIsOpenMenu(false);
-    }
-  };
-  const handleScroll = () => {
-    setIsScrolled(window.screenY > 0);
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", closeMenuOutside);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("mousedown", closeMenuOutside);
-      window.removeEventListener("scroll", handleScroll);
-    };
-    //we only want to show that black box in home page
-  });
-  const isHomePage = location.pathname === "/";
+ 
   return (
     <div>
       <header
         className={
-          isHomePage
-            ? `header bg-white-100 relative px-4 lg:px-12 py-3 z-20  ${isScrolled ? "scrolled" : ""}`
-            : `header relative px-4 lg:px-12 py-3 z-20 ${isScrolled ? "scrolled" : ""}`
+        `header bg-white-100 relative px-4 lg:px-12 py-3 z-20 `
+            
         }
       >
-        {isHomePage && <div className={`${isScrolled ? "bg-none" : "bg-black text-white"} lg:h-[88px] lg:absolute lg:top-0 lg:right-0 lg:w-1/3 lg:-z-10`}></div>}
         <nav className="p-4 flex items-center justify-between relative">
           <div className="flex items-center gap-14">
             <div
@@ -79,7 +53,7 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className={`flex items-center gap-10 ${isScrolled || isHomePage ? "text-white" :"text-black"}`}>
+          <div className={`flex items-center gap-10`}>
             <div className="uppercase hidden lg:flex items-center">
               <SignInButton mode="modal" />
               <span>/</span>

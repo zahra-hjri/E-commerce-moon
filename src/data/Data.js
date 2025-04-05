@@ -21,8 +21,8 @@ export const menulists = [
   },
   {
     id: 5,
-    href: "/services",
-    title: "Services",
+    href: "/support",
+    title: "support",
   },
   {
     id: 6,

@@ -24,14 +24,11 @@ const Header = () => {
   const handleMenuToggle = () => {
     setIsOpenMenu((prev) => !prev);
   };
- 
+
   return (
     <div>
       <header
-        className={
-        `header bg-white-100 relative px-4 lg:px-12 py-3 z-20 `
-            
-        }
+        className={`header bg-white-100 relative px-4 lg:px-12 py-3 z-20 shadow-md`}
       >
         <nav className="p-4 flex items-center justify-between relative">
           <div className="flex items-center gap-14">
@@ -55,9 +52,10 @@ const Header = () => {
 
           <div className={`flex items-center gap-10`}>
             <div className="uppercase hidden lg:flex items-center">
-              <SignInButton mode="modal" />
+              {/* <SignInButton mode="modal" /> */}
+              <span className="cursor-pointer">login</span>
               <span>/</span>
-              <span>register</span>
+              <span className="cursor-pointer">register</span>
             </div>
             <div className="icons flex items-center gap-8">
               <IoSearchOutline size="24" className="cursor-pointer" />

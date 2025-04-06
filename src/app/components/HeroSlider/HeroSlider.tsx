@@ -14,19 +14,19 @@ const slides = [
     id: 1,
     image: "/images/hero/h1.png",
     title: "Nautural wooden products",
-    description: "sell globally in munites with localized languages",
+    description: "sell globally in munites with localized languages munites with localized",
   },
   {
     id: 2,
     image: "/images/hero/h2.png",
     title: "Nautural wooden products",
-    description: "sell globally in munites with localized languages",
+    description: "sell globally in munites with localized languages munites with localized",
   },
   {
     id: 3,
     image: "/images/hero/h2.png",
     title: "Nautural wooden products",
-    description: "sell globally in munites with localized languages",
+    description: "sell globally in munites with localized languages munites with localized",
   },
 ];
 
@@ -46,10 +46,10 @@ export default function HeroSlider() {
           <SwiperSlide key={slide.id}>
             <div className="flex w-full h-full">
               <div className="w-[50%] flex flex-col justify-center items-center bg-white-100 text-black text-center px-4">
-                <h2 className="text-3xl md:text-5xl font-bold">
+                <h2 className="text-3xl md:text-5xl font-bold w-[400px] text-start my-2">
                   {slide.title}
                 </h2>
-                <p className="mt-2 text-lg">{slide.description}</p>
+                <p className="mt-2 text-lg w-[400px] text-start">{slide.description}</p>
               </div>
               <div className="w-[50%] p-10 flex items-center justify-center bg-white">
                 <Image

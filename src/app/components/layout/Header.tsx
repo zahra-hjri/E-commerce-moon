@@ -14,7 +14,7 @@ import {
   IoClose,
 } from "react-icons/io5";
 import Badge from "@/app/components/ui/Badge";
-import { SignInButton, UserButton } from "@clerk/nextjs";
+// import { SignInButton, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 
 const Header = () => {
@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <div>
       <header
-        className={`header bg-white-100 relative px-4 lg:px-12 py-3 z-20 shadow-md`}
+        className={`header bg-white-100 px-4 lg:px-12 py-3 z-20 sticky`}
       >
         <nav className="p-4 flex items-center justify-between relative">
           <div className="flex items-center gap-14">
@@ -81,7 +81,7 @@ const Header = () => {
                   <IoMenuOutline size={24} />
                 )}
               </button>
-              <UserButton />
+              {/* <UserButton /> */}
             </div>
           </div>
         </nav>

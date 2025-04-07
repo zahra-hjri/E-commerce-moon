@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], 
+  variable: '--font-poppins',   
+  display: 'swap',              
+})
 //components
 import Header from "@/app/components/layout/Header";
 // import Footer from "@/app/components/layout/Footer";
@@ -21,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
+    <html lang="en" className={poppins.variable}>
       <body className="">
         <Providers>
           <CartProvider>

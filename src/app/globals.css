@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,3 +21,4 @@ body {
   margin: 0;
   padding: 0;
 }
+

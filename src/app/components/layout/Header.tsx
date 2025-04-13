@@ -16,20 +16,23 @@ import {
 import Badge from "@/app/components/ui/Badge";
 // import { SignInButton, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import type { RootState } from "@/redux/store";
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const Carts = useSelector((state: RootState) => state.crm.Carts);
+  const FavoritProducts = useSelector(
+    (state: RootState) => state.crm.FavoritProducts
+  );
   const handleMenuToggle = () => {
     setIsOpenMenu((prev) => !prev);
   };
 
   return (
     <div>
-      <header
-        className={`header bg-white-100 px-4 lg:px-12 py-3 z-20 sticky`}
-      >
+      <header className={`header bg-white-100 px-4 lg:px-12 py-3 z-20 sticky`}>
         <nav className="p-4 flex items-center justify-between relative">
           <div className="flex items-center gap-14">
             <div
@@ -61,13 +64,13 @@ const Header = () => {
               <IoSearchOutline size="24" className="cursor-pointer" />
               <div className="relative z-20 cursor-pointer">
                 <div className="absolute -top-2 -right-2">
-                  <Badge color="bg-primary-green">0</Badge>
+                  <Badge color="bg-primary-green">{FavoritProducts.length}</Badge>
                 </div>
                 <IoHeartOutline size="24" />
               </div>
               <div className="relative z-20 cursor-pointer">
                 <div className="absolute -top-2 -right-2">
-                  <Badge color="bg-primary-green">0</Badge>
+                  <Badge color="bg-primary-green">{Carts.length}</Badge>
                 </div>
                 <IoCartOutline size="24" />
               </div>

@@ -16,18 +16,20 @@ type FavoritProduct = {
   name: string;
   image: string;
   price: number;
-}
+};
 
 interface CrmState {
   Customers: Customer[];
   Carts: Cart[];
-  FavoritProducts:FavoritProduct[]
+  FavoritProducts: FavoritProduct[];
+  Counter: number;
 }
 
 const initialState: CrmState = {
   Customers: [],
   Carts: [],
-  FavoritProducts:[]
+  FavoritProducts: [],
+  Counter: 0,
 };
 
 const crmSlice = createSlice({
@@ -43,11 +45,28 @@ const crmSlice = createSlice({
     addToCart: (state, action: PayloadAction<Cart>) => {
       state.Carts.push(action.payload);
     },
-    addToFavorit:(state,action: PayloadAction<FavoritProduct>)=>{
-      state.FavoritProducts.push(action.payload)
-    }
+    addToFavorit: (state, action: PayloadAction<FavoritProduct>) => {
+      state.FavoritProducts.push(action.payload);
+    },
+    decrease: (state, action: PayloadAction<number>) => {
+      state.Counter -= action.payload;
+    },
+    increase: (state, action: PayloadAction<number>) => {
+      state.Counter += action.payload;
+    },
+    reset: (state, action: PayloadAction<number>) => {
+      state.Counter = action.payload;
+    },
   },
 });
 
-export const { addCustomer, setCustomers, addToCart,addToFavorit } = crmSlice.actions;
+export const {
+  addCustomer,
+  setCustomers,
+  addToCart,
+  addToFavorit,
+  decrease,
+  increase,
+  reset
+} = crmSlice.actions;
 export default crmSlice.reducer;

@@ -37,7 +37,7 @@ export default function ProductsList() {
           />
           <h2 className="font-bold mt-2">{product.name}</h2>
           <p className="text-green-600">
-            {product.price.toLocaleString()} تومان
+            {product.price.toLocaleString()} $
           </p>
           <button
             onClick={() => dispatch(addToCart(product))}

@@ -47,7 +47,7 @@ export default function ProductsList() {
           </button>
           <button
             onClick={() => dispatch(addToFavorit(product))}
-            className="bg-rose-500 rounded-lg py-1 px-3 text-white"
+            className="bg-rose-300 rounded-lg py-1 px-3 text-white"
           >
             add to favorite
           </button>

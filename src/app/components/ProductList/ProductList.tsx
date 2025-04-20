@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart,addToFavorit } from "@/redux/crmSlice";
-import { RootState } from "@/redux/store";
 
 type Product = {
   id: number;
@@ -16,11 +15,12 @@ type Product = {
 export default function ProductsList() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<Product[]>([]);
-  const Carts = useSelector((state: RootState) => state.crm.Carts);
-  console.log(Carts.length);
+ 
   useEffect(() => {
     fetch("/api/products")
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => setProducts(data));
   }, []);
 

@@ -11,7 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.12.4",
     "@reduxjs/toolkit": "^2.6.0",
-    "axios": "^1.8.1",
+    "axios": "^1.8.4",
     "mongodb": "^6.13.1",
     "next": "15.1.7",
     "react": "^19.0.0",

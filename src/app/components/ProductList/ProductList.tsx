@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart,addToFavorit } from "@/redux/crmSlice";
+import { addToCart, addToFavorit } from "@/redux/crmSlice";
+import axios from "axios";
 
 type Product = {
   id: number;
@@ -15,14 +16,21 @@ type Product = {
 export default function ProductsList() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<Product[]>([]);
- 
+
   useEffect(() => {
-    fetch("/api/products")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => setProducts(data));
+    axios
+      .get("/api/products")
+      .then((response) => setProducts(response.data))
+      .catch((error) => console.log(error));
   }, []);
+
+  // useEffect(() => {
+  //   fetch("/api/products")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => setProducts(data));
+  // }, []);
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4">
@@ -36,9 +44,7 @@ export default function ProductsList() {
             className="w-full h-40 object-contain"
           />
           <h2 className="font-bold mt-2">{product.name}</h2>
-          <p className="text-green-600">
-            {product.price.toLocaleString()} $
-          </p>
+          <p className="text-green-600">{product.price.toLocaleString()} $</p>
           <button
             onClick={() => dispatch(addToCart(product))}
             className="bg-orange-500 rounded-lg py-1 px-3 text-white"

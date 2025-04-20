@@ -17,20 +17,25 @@ export default function ProductsList() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    axios
-      .get("/api/products")
-      .then((response) => setProducts(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
   // useEffect(() => {
-  //   fetch("/api/products")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => setProducts(data));
+  //   axios
+  //     .get("/api/products")
+  //     .then((response) => setProducts(response.data))
+  //     .catch((error) => console.log(error));
   // }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+     try{
+      const response = await axios.get("/api/products");
+      setProducts(response.data);
+     }
+     catch(error) {
+       console.log(error);
+     }
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4">

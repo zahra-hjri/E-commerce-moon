@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import React, { useState } from "react";
 import InputField from "@/app/components/ui/InputField";
 
@@ -21,28 +22,24 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
+      const response = await axios.post("/api/auth/register", formData, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccessMessage(data.message); 
+  
+      if (response.status === 200) {
+        setSuccessMessage(response.data.message); 
         setError(null); 
       } else {
-        setError(data.error); 
+        setError(response.data.error); 
         setSuccessMessage(null); 
       }
     } catch (error) {
-      console.error(" error in register:", error);
-      setError("please try again");
+      console.error("Error in register:", error);
+      setError("Please try again");
       setSuccessMessage(null);
     }
   };

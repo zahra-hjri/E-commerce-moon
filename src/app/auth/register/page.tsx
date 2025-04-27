@@ -22,28 +22,27 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // درخواست به API ثبت‌نام
     try {
       const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // ارسال فرم دیتا
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setSuccessMessage(data.message); // پیغام موفقیت
-        setError(null); // پاک کردن خطاها
+        setSuccessMessage(data.message); 
+        setError(null); 
       } else {
-        setError(data.error); // نمایش خطا در صورت وجود
-        setSuccessMessage(null); // پاک کردن پیغام موفقیت
+        setError(data.error); 
+        setSuccessMessage(null); 
       }
     } catch (error) {
-      console.error("خطا در ثبت‌نام:", error);
-      setError("مشکلی پیش آمده. لطفا دوباره تلاش کنید.");
+      console.error(" error in register:", error);
+      setError("please try again");
       setSuccessMessage(null);
     }
   };
@@ -58,8 +57,8 @@ const Register = () => {
           Register
         </h2>
 
-        {error && <p className="text-red-600">{error}</p>}
-        {successMessage && <p className="text-green-600">{successMessage}</p>}
+        {error && <p className="text-red-500 font-bold pb-2">{error}</p>}
+        {successMessage && <p className="text-green-500 font-bold pb-2">{successMessage}</p>}
 
         <InputField
           label="Username"

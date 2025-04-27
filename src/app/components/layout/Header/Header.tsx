@@ -11,15 +11,21 @@ import { useSelector } from "react-redux";
 import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
 import { RootState } from "@/redux/store";
 
+
 const Header = () => {
-  const logo = "/path/to/logo.png";
+  const logo = "/images/common/logo.png";
   const router = useRouter();
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isDrawerOpenFavorite, setIsDrawerOpenFavorite] = useState<boolean>(false);
+  const [isDrawerOpenCarts, setIsDrawerOpenCarts] = useState<boolean>(false);
   const FavoritProducts = useSelector((state: RootState) => state.crm.FavoritProducts);
   const Carts = useSelector((state: RootState) => state.crm.Carts);
 
-  const handleOpenDrawer = () => {
-    setIsDrawerOpen((prev) => !prev);
+  const handleOpenDrawerFavorite = () => {
+    setIsDrawerOpenFavorite((prev) => !prev);
+  };
+
+  const handleOpenDrawerCarts = () => {
+    setIsDrawerOpenCarts((prev) => !prev);
   };
 
   return (
@@ -41,22 +47,32 @@ const Header = () => {
             <IconWithBadge
               icon={<IoHeartOutline size={30} />}
               count={FavoritProducts.length}
-              onClick={handleOpenDrawer}
+              onClick={handleOpenDrawerFavorite}
             />
             <IconWithBadge
               icon={<IoCartOutline size={30} />}
               count={Carts.length}
-              onClick={handleOpenDrawer}
+              onClick={handleOpenDrawerCarts}
             />
           </div>
         </nav>
       </header>
 
-      {isDrawerOpen && (
+      {isDrawerOpenFavorite && (
         <DrawerContent
           items={FavoritProducts}
           title="Favorite Products"
-          onClose={handleOpenDrawer}
+          onClose={handleOpenDrawerFavorite}
+          isOpen={isDrawerOpenFavorite}
+        />
+      )}
+
+      {isDrawerOpenCarts && (
+        <DrawerContent
+          items={Carts}
+          title="Cart Items"
+          onClose={handleOpenDrawerCarts}
+          isOpen={isDrawerOpenCarts}
         />
       )}
     </div>

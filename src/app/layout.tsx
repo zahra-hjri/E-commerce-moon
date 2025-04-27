@@ -9,7 +9,7 @@ const poppins = Poppins({
   display: 'swap',              
 })
 //components
-import Header from "@/app/components/layout/Header";
+import Header from "@/app/components/layout/Header/Header";
 // import Footer from "@/app/components/layout/Footer";
 //context
 import { CartProvider } from "@/context/CartContext";

@@ -1,49 +1,24 @@
 "use client";
 
-import axios from 'axios';
+import axios from "axios";
 import React, { useState } from "react";
 import InputField from "@/app/components/ui/InputField";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    try {
-      const response = await axios.post("/api/auth/register", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-  
-      if (response.status === 200) {
-        setSuccessMessage(response.data.message); 
-        setError(null); 
-      } else {
-        setError(response.data.error); 
-        setSuccessMessage(null); 
-      }
-    } catch (error) {
-      console.error("Error in register:", error);
-      setError("Please try again");
-      setSuccessMessage(null);
-    }
-  };
+    const response = await axios.post("/api/auth/register" , {username,password})
+    console.log(response.data)
 
+    if(response.status === 200){
+      alert("success register")
+    }
+    alert("Registration failed!")
+  };
   return (
     <div className="bg-gray-100 h-screen w-full flex py-20 justify-center">
       <form
@@ -54,29 +29,31 @@ const Register = () => {
           Register
         </h2>
 
-        {error && <p className="text-red-500 font-bold pb-2">{error}</p>}
-        {successMessage && <p className="text-green-500 font-bold pb-2">{successMessage}</p>}
+        {/* {error && <p className="text-red-500 font-bold pb-2">{error}</p>}
+        {successMessage && (
+          <p className="text-green-500 font-bold pb-2">{successMessage}</p>
+        )} */}
 
         <InputField
           label="Username"
           name="username"
           type="text"
-          value={formData.username}
-          onChange={handleChange}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <InputField
           label="Email"
           name="email"
           type="email"
-          value={formData.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <InputField
           label="Password"
           name="password"
           type="password"
-          value={formData.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <button

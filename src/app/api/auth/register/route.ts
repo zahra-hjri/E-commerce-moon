@@ -1,27 +1,32 @@
+import User from "@/model/User";
+import dbConnect from "@/utils/mongodb";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  try {
-    const { username, email, password } = await request.json();
+  await dbConnect();
 
-    if (!username || !email || !password) {
+  const { username, password } = await request.json();
+
+  try {
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
       return NextResponse.json(
-        { error: "Please fill in all the fields." },
-        { status: 400 }
+        { message: "user already registered" },
+        { status: 401 }
       );
     }
 
-    console.log("A new user has registered:", { username, email });
-
-    return NextResponse.json(
-      { message: "Registration was successful!" },
-      { status: 200 }
-    );
+    const newUser = new User({ username, password });
+    await newUser.save();
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
-      { error: "There was an issue with the registration." },
+      { message: "Internal server error" },
       { status: 500 }
     );
+    console.log(error);
   }
+  return NextResponse.json(
+    { message: "user registered successfully" },
+    { status: 201 }
+  );
 }

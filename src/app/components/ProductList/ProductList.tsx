@@ -40,7 +40,7 @@ export default function ProductsList() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 py-12 px-4 lg:px-12">
       {loading
-        ? Array.from({ length: 6 }).map((_, index) => (
+        ? Array.from({ length: 9 }).map((_, index) => (
             <ProductSkeleton key={index} />
           ))
         : products.map((product) => (

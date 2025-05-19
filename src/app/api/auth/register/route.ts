@@ -1,3 +1,5 @@
+import bcrypt from "bcryptjs";
+
 import User from "@/models/User";
 import dbConnect from "@/utils/mongodb";
 import { NextResponse } from "next/server";
@@ -15,8 +17,8 @@ export async function POST(request: Request) {
         { status: 401 }
       );
     }
-
-    const newUser = new User({ username, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, password:hashedPassword });
     await newUser.save();
   } catch (error) {
     return NextResponse.json(

@@ -8,17 +8,26 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post("/api/auth/register" , {username,password})
-    console.log(response.data)
+    try {
+      const response = await axios.post("/api/auth/register", {
+        username,
+        email,
+        password,
+      });
 
-    if(response.status === 200){
-      alert("success register")
+      if (response.status >= 200 && response.status < 300) {
+        alert("Success register");
+      } else {
+        alert("Registration failed!");
+      }
+    } catch (error) {
+      alert("Registration failed!");
+      console.error("Registration error:", error);
     }
-    alert("Registration failed!")
   };
+
   return (
     <div className="bg-gray-100 h-screen w-full flex py-20 justify-center">
       <form

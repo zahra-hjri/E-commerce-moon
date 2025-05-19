@@ -7,6 +7,7 @@ import { addToCart, addToFavorit } from "@/redux/crmSlice";
 import axios from "axios";
 import Modal from "../ui/Modal";
 import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
+import ProductSkeleton from "./ProductSkeleton";
 
 type Product = {
   id: number;
@@ -20,6 +21,7 @@ export default function ProductsList() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,6 +30,8 @@ export default function ProductsList() {
         setProducts(response.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -35,45 +39,52 @@ export default function ProductsList() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 py-12 px-4 lg:px-12">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className="border p-6 rounded shadow-2xl bg-gray-100 flex flex-col items-center"
-        >
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={200}
-            height={200}
-            className="w-full h-60 object-contain"
-          />
-          <div className="flex justify-between items-center w-full my-6">
-            <div className="flex flex-col items-start gap-1">
-              <h2 className="font-bold text-lg">{product.name}</h2>
-              <p className="text-gray-600">
-                {product.price.toLocaleString()} $
-              </p>
-            </div>
-            <div className="flex space-x-4">
+      {loading
+        ? Array.from({ length: 6 }).map((_, index) => (
+            <ProductSkeleton key={index} />
+          ))
+        : products.map((product) => (
+            <div
+              key={product.id}
+              className="border p-6 rounded shadow-2xl bg-gray-100 flex flex-col items-center"
+            >
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={200}
+                height={200}
+                className="w-full h-60 object-contain"
+              />
+              <div className="flex justify-between items-center w-full my-6">
+                <div className="flex flex-col items-start gap-1">
+                  <h2 className="font-bold text-lg">{product.name}</h2>
+                  <p className="text-gray-600">
+                    {product.price.toLocaleString()} $
+                  </p>
+                </div>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => dispatch(addToCart(product))}
+                    className="transform transition-all duration-300 hover:scale-125"
+                  >
+                    <IoCartOutline size={30} />
+                  </button>
+                  <button
+                    onClick={() => dispatch(addToFavorit(product))}
+                    className="transform transition-all duration-300 hover:scale-125"
+                  >
+                    <IoHeartOutline size={30} />
+                  </button>
+                </div>
+              </div>
               <button
-                onClick={() => dispatch(addToCart(product))}
-                className="transform transition-all duration-300 hover:scale-125"
+                onClick={() => setSelectedProduct(product)}
+                className="mt-4"
               >
-                <IoCartOutline size={30} />
-              </button>
-              <button
-                onClick={() => dispatch(addToFavorit(product))}
-                className="transform transition-all duration-300 hover:scale-125"
-              >
-                <IoHeartOutline size={30} />
+                Show More
               </button>
             </div>
-          </div>
-          <button onClick={() => setSelectedProduct(product)} className="mt-4 ">
-            Show More
-          </button>
-        </div>
-      ))}
+          ))}
 
       {selectedProduct && (
         <Modal onClose={() => setSelectedProduct(null)}>

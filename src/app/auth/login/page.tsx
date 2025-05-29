@@ -29,33 +29,32 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-100 h-screen w-full flex py-20 justify-center">
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-md mx-auto max-h-fit mt-10 p-6 border rounded-xl shadow-md bg-white"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          className="w-full mb-4 p-2 border rounded"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full mb-4 p-2 border rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="w-full bg-orange-400 text-white p-2 rounded hover:bg-blue-700 transition"
-        >
-          Login
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-[#F3F3F3]">
+      <div className="w-full max-w-md p-8 rounded-xl shadow-lg border border-[#0D775E] bg-white">
+        <h2 className="text-3xl font-bold text-[#0D775E] text-center mb-6">Login</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 rounded border border-[#0D775E] text-[#0D775E] placeholder-[#0D775E] focus:outline-none focus:ring-2 focus:ring-[#0D775E]"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 rounded border border-[#0D775E] text-[#0D775E] placeholder-[#0D775E] focus:outline-none focus:ring-2 focus:ring-[#0D775E]"
+          />
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#0D775E] text-[#F3F3F3] font-semibold rounded hover:bg-[#0a5d4b] transition"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -38,11 +38,6 @@ const Register = () => {
           Register
         </h2>
 
-        {/* {error && <p className="text-red-500 font-bold pb-2">{error}</p>}
-        {successMessage && (
-          <p className="text-green-500 font-bold pb-2">{successMessage}</p>
-        )} */}
-
         <InputField
           label="Username"
           name="username"

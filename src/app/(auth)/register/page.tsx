@@ -3,11 +3,31 @@ import { useState } from "react";
 
 import { Button } from "@/app/components/ui/Button";
 import { Input } from "@/app/components/ui/Input";
+import { toast } from "sonner";
 
 const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch("/api/auth/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phoneNumber }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success(" send OTP successful 🎉");
+      } else {
+        toast.error(data.message || "Error in send OTP");
+      }
+    } catch (err) {
+      toast.error("network error");
+      console.log(err)
+    }
   };
 
   return (
@@ -16,11 +36,11 @@ const Register = () => {
         <Input
           className="border"
           type="text"
-          placeholder="شماره موبایل رو وارد کن"
+          placeholder="Enter mobile number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-        <Button className="mt-4 w-full">ارسال کد otp</Button>
+        <Button className="mt-4 w-full">send OTP code ...</Button>
       </form>
     </div>
   );

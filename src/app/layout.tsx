@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from 'next/font/google'
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -35,6 +36,7 @@ export default function RootLayout({
           <CartProvider>
             <Header />
             {children}
+             <Toaster richColors position="top-center" />
             {/* <Footer /> */}
           </CartProvider>
         </Providers>

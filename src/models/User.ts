@@ -1,4 +1,3 @@
-// models/User.ts
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -32,7 +31,6 @@ const gusetOTPSchema = new mongoose.Schema(
   }
 );
 
-// پاک شدن خودکار OTP بعد از 5 دقیقه (300 ثانیه)
 gusetOTPSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);

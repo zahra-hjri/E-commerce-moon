@@ -1,32 +1,32 @@
 "use client";
 import { useState } from "react";
+import { toast } from "sonner";
+import axios from "axios";
 
 import { Button } from "@/app/components/ui/Button";
 import { Input } from "@/app/components/ui/Input";
-import { toast } from "sonner";
 
 const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/auth/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber }),
+      const res = await axios.post("/api/auth/send-otp", {
+        phoneNumber,
       });
+      console.log(res)
 
-      const data = await res.json();
-
-      if (res.ok) {
-        toast.success(" send OTP successful 🎉");
-      } else {
-        toast.error(data.message || "Error in send OTP");
-      }
+      toast.success("send OTP successful 🎉");
     } catch (err) {
-      toast.error("network error");
-      console.log(err)
+      if (axios.isAxiosError(err)) {
+        toast.error(err.response?.data?.message || "Error in send OTP");
+      } else {
+        toast.error("network error");
+      }
+
+      console.log(err);
     }
   };
 

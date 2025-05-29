@@ -1,4 +1,4 @@
-import Badge from "@/app/components/ui/Badge";
+import Badge from "@/app/shared-components/ui/Badge";
 
 interface IconWithBadgeProps {
   icon: React.ReactNode;

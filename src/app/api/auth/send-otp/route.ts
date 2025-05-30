@@ -25,5 +25,5 @@ export async function POST(req: Request) {
 
   console.log("OTP:", otp);
 
-  return NextResponse.json({ message: "کد ارسال شد" });
+  return NextResponse.json({ message: "code has been send" });
 }

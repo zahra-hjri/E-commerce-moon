@@ -85,7 +85,7 @@ const Register = () => {
       )}
       {step === 3 && (
         <div className="w-[50%] mt-10 mx-auto bg-blue-500 text-white flex items-center justify-center p-1">
-          yohoooooo 😍😍😍😍
+          yohoooooo 😍
         </div>
       )}
     </div>

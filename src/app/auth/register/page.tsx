@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import React, { useState } from "react";
-import InputField from "@/app/components/ui/InputField";
+import InputField from "@/app/shared-components/ui/InputField";
 
 const Register = () => {
   const [username, setUsername] = useState("");

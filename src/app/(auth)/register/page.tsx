@@ -16,7 +16,7 @@ const Register = () => {
       const res = await axios.post("/api/auth/send-otp", {
         phoneNumber,
       });
-      console.log(res)
+      console.log("resssss",res)
 
       toast.success("send OTP successful 🎉");
     } catch (err) {

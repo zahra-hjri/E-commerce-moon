@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   const otp = randomInt(10000, 99999);
 
   await GusetOTPModel.findOneAndUpdate(
-    { phoneNumber: phoneNumber },
+    { phoneNumber },
     {
       phoneNumber: phoneNumber,
       OTPCode: otp,

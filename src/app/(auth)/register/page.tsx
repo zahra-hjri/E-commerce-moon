@@ -43,10 +43,8 @@ const Register = () => {
         phoneNumber,
         otp,
       });
-      console.log(res);
       toast.success("Verified otp ✅");
       const token = res.data.token;
-
       localStorage.setItem("token", token);
 
       router.push("/dashboard");
@@ -80,7 +78,7 @@ const Register = () => {
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
           />
-          <Button className="mt-4 w-full bg-orange-600">apply</Button>
+          <Button className="mt-4 w-full !bg-orange-600">apply</Button>
         </form>
       )}
       {step === 3 && (

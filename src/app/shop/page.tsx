@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import ProductsList from '../components/ProductList/ProductList'
+import ProductsList from '@/app/shared-components/ProductList/ProductList'
 
 const Shop = () => {
   return (

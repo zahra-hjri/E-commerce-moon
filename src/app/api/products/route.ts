@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 const products = [
   {
     id: 1,
@@ -67,4 +69,10 @@ const products = [
 
 export async function GET() {
   return Response.json(products);
+}
+
+export async function POST(request:Request){
+const newProduct = await request.json()
+products.push(newProduct)
+return NextResponse.json(newProduct, {status:201})
 }

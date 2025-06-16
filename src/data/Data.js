@@ -11,8 +11,8 @@ export const menulists = [
   },
   {
     id: 3,
-    href: "/blog",
-    title: "Blog",
+    href: "/newProduct",
+    title: "new Product",
   },
   {
     id: 4,

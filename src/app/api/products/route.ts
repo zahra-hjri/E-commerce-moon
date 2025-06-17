@@ -73,6 +73,11 @@ export async function GET() {
 
 export async function POST(request:Request){
 const newProduct = await request.json()
+  if (!newProduct.id) {
+    newProduct.id = products.length > 0 
+      ? Math.max(...products.map(p => p.id)) + 1 
+      : 1;
+  }
 products.push(newProduct)
 return NextResponse.json(newProduct, {status:201})
 }

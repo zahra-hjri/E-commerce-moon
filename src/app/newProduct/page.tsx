@@ -40,14 +40,14 @@ const NewProduct = () => {
         <InputField
           label="id"
           type="text"
-          name="name"
+          name="id"
           value={product.id}
           onChange={handleChange}
         />
         <InputField
           label="name"
           type="text"
-          name="name"
+          name="title"
           value={product.title}
           onChange={handleChange}
         />
@@ -60,6 +60,7 @@ const NewProduct = () => {
         />
         <textarea
           placeholder="description"
+          name="description"
           value={product.description}
           onChange={handleChange}
           className="rounded-xl bg-gray-50 border border-gray-300 shadow-inner w-full h-[200px] p-2 focus:outline-none focus:ring-2 focus:ring-green-600 mt-4"

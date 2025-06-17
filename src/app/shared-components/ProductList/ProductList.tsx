@@ -11,18 +11,18 @@ import ProductSkeleton from "./ProductSkeleton";
 
 type Product = {
   id: number;
-  name: string;
+  title: string;
   price: number;
   image: string;
   description: string;
 };
 
 export default function ProductsList() {
+  const defaultImage = "/images/product/product1.2.png";
   const dispatch = useDispatch();
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -49,15 +49,15 @@ export default function ProductsList() {
               className="border p-6 rounded shadow-2xl bg-gray-100 flex flex-col items-center"
             >
               <Image
-                src={product.image}
-                alt={product.name}
+                src={product.image ? product.image : defaultImage}
+                alt={product.title}
                 width={200}
                 height={200}
                 className="w-full h-60 object-contain"
               />
               <div className="flex justify-between items-center w-full my-6">
                 <div className="flex flex-col items-start gap-1">
-                  <h2 className="font-bold text-lg">{product.name}</h2>
+                  <h2 className="font-bold text-lg">{product.title}</h2>
                   <p className="text-gray-600">
                     {product.price.toLocaleString()} $
                   </p>
@@ -91,12 +91,12 @@ export default function ProductsList() {
           <div className="text-center">
             <Image
               src={selectedProduct.image}
-              alt={selectedProduct.name}
+              alt={selectedProduct.title}
               width={200}
               height={200}
               className="mx-auto mb-4"
             />
-            <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
+            <h2 className="text-2xl font-bold mb-2">{selectedProduct.title}</h2>
             <p className="text-gray-700 mb-2">
               price: {selectedProduct.price.toLocaleString()} $
             </p>

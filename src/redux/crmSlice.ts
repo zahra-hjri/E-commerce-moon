@@ -7,13 +7,13 @@ type Customer = {
 
 type Cart = {
   id: number;
-  name: string;
+  title: string;
   image: string;
   price: number;
 };
 type FavoritProduct = {
   id: number;
-  name: string;
+  title: string;
   image: string;
   price: number;
 };

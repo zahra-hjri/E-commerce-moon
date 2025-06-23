@@ -1,8 +1,8 @@
 export default function Tamrin() {
   let count = 0;
   const counter = () => {
-    count++;
-    return count;
+    // count++;
+    return ++count;
   };
   console.log(counter());
   console.log(counter());
